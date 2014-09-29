@@ -1,7 +1,7 @@
 img-encode
 ==========
 
-Encode an image to sound
+Encode an image to audio spectrum
 
 ## How to use it:
 
