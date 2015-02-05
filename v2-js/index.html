@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>encode</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/riffwave.js"></script>
+        <script src="js/FileSave.js"></script>
+        <script src="js/engine.js"></script>
+    </head>
+    <body>
+        <div>
+            Source image:
+            <input id="fileUrl" type="text" name="fileUrl" size="100" value="monalisa.jpg">
+            <button id="openButton" onclick="loadCanvas($('#fileUrl').val());">Open</button>
+            <button id="openButton" onclick="getImageData();">Create</button>
+            <canvas id="canvas">
+
+            </canvas>
+        </div>
+    </body>
+</html>

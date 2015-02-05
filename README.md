@@ -11,7 +11,7 @@ where '-t' is duration (in seconds)
 
 If you provide 'monalisa.jpg' as input:
 
-![alt monalisa.png](https://github.com/alexadam/img-encode/blob/master/monalisa.png?raw=true "monalisa.png")
+![alt monalisa.jpg](https://github.com/alexadam/img-encode/blob/master/monalisa.jpg?raw=true "monalisa.jpg")
 
 then open the generated 'monalisa.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectogram', you get:
 
