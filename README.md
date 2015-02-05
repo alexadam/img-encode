@@ -28,3 +28,7 @@ then open the generated 'monalisa.wav' file with 'Sonic Visualizer', click on 'L
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec4.png?raw=true "spec4.png")
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec5.png?raw=true "spec5.png")
+
+## Credits
+
+http://www.ohmpie.com/imageencode/
