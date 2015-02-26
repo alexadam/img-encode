@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>encode</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/riffwave.js"></script>
-        <script src="js/FileSave.js"></script>
-        <script src="js/engine.js"></script>
-    </head>
-    <body>
-        <div>
-            Source image:
-            <input id="fileUrl" type="text" name="fileUrl" size="100" value="monalisa.jpg">
-            <button id="openButton" onclick="loadCanvas($('#fileUrl').val());">Open</button>
-            <button id="openButton" onclick="getImageData();">Create</button>
-            <canvas id="canvas">
 
-            </canvas>
+<head>
+    <title>encode</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/riffwave.js"></script>
+    <script src="js/FileSave.js"></script>
+    <script src="js/engine.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <label>Source image:</label>
+            <input id="fileUrl" type="text" name="fileUrl" value="monalisa.jpg">
+            <button id="openButton" onclick="loadCanvas($('#fileUrl').val());">Load Image...</button>
+            <label>--></label>
+            <button id="openButton" onclick="getImageData();">Create</button>
+            <br>
+            <div class="row">
+                <label>yFactor:</label>
+                <input id="yFactor" type="number" name="yFactor" value="2" />
+                <label>Length (seconds):</label>
+                <input id="length" type="number" name="length" value="3" />
+                <label>Max. Frequency (Hz):</label>
+                <input id="maxFreq" type="number" name="maxFreq" value="20000" />
+            </div>
         </div>
-    </body>
+        <canvas id="canvas">
+
+        </canvas>
+    </div>
+</body>
+
 </html>

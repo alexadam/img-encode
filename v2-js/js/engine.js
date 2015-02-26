@@ -17,7 +17,7 @@ function getImageData() {
     var height = srcImgData1.height;
     var width = srcImgData1.width;
 
-    var durationSeconds = 3;
+    var durationSeconds = parseFloat($('#length').val());
     var tmpData = [];
     var maxFreq = 0;
     var data = [];
@@ -25,10 +25,9 @@ function getImageData() {
     var channels = 1;
     var numSamples = Math.round(sampleRate * durationSeconds);
     var samplesPerPixel = Math.floor(numSamples / width);
-    var C = 20000 / height;
-    var yFactor = 2;//Math.floor(height / 200) + 1;
-
-    console.log(yFactor);
+    var maxSpecFreq = parseInt($('#maxFreq').val());
+    var C = maxSpecFreq / height;
+    var yFactor = parseFloat($('#yFactor').val());
 
     for (var x = 0; x < numSamples; x++) {
         var rez = 0;

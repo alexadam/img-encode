@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: courier, helvetica;
+	font-weight: bolder;
+}
+
+#header {
+	width: 100%;
+	padding: 20px 0;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAEklEQVQImWNgYGCQYsABqCkBABpPAIMVq8LQAAAAAElFTkSuQmCC) repeat;	
+	border-bottom: solid 2px black;
+}
+
+.row {
+    margin-top: 5px;
+    margin-left: 49px;
+}
+
+input {
+	border: solid 1px #ccc;
+	padding: 2px;
+	font-family: inherit;
+}
+
+#fileUrl {
+	width: 60%;
+}
+
+button {
+	font-family: inherit;
+	border:solid 1px #ccc;
+	font-weight: bolder;
+}
+
+button:hover {
+	font-family: inherit;
+	border:solid 1px black;
+	font-weight: bolder;
+}
+
+label {
+	background-color: yellow;
+	padding: 2px;
+	margin-right: 0px;
+}

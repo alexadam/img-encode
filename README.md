@@ -3,17 +3,9 @@ img-encode
 
 Encode an image to audio spectrum
 
-## How to use it (python version):
+![alt main.png](https://github.com/alexadam/img-encode/blob/master/main.png?raw=true "main.png")
 
-./imgencode.py -i monalisa.png -o monalisa.wav -t 2
-
-where '-t' is duration (in seconds)
-
-If you provide 'monalisa.jpg' as input:
-
-![alt monalisa.jpg](https://github.com/alexadam/img-encode/blob/master/monalisa.jpg?raw=true "monalisa.jpg")
-
-then open the generated 'monalisa.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectogram', you get:
+Open the generated 'result.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectrogram', you get:
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec6.png?raw=true "spec6.png")
 
@@ -32,3 +24,9 @@ then open the generated 'monalisa.wav' file with 'Sonic Visualizer', click on 'L
 ## Credits
 
 http://www.ohmpie.com/imageencode/
+
+http://www.codebase.es/riffwave/
+
+https://github.com/eligrey/FileSaver.js
+
+
