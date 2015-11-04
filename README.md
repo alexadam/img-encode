@@ -24,7 +24,7 @@ Open the generated 'result.wav' file with 'Sonic Visualizer', click on 'Layer ->
 ## How to use it
 
 There are 2 versions: python ('v1-python' - no longer maintained) and javascript ('v2-js')
-This is an usage example for the javascript version, tested on Firefox 42, Ubuntu 15.14, Sonic Visualizer 2.4
+This is an usage example for the javascript version, tested on Firefox 41, Ubuntu 15.10, Sonic Visualizer 2.4
 
 1. Download as .zip or clone the repository
 
