@@ -12,29 +12,86 @@
     <script src="js/riffwave.js"></script>
     <script src="js/FileSave.js"></script>
     <script src="js/engine.js"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+            var fileLoaded = false;
+            var showPreview = false;
+            var showSettings = false;
+
+            $('#openButton').on('click', function () {
+                $( "#fileBrowser" ).trigger( "click" );
+            });
+
+            $('#fileBrowser').on('change', function() {
+                var filePath = $(this).val();
+                loadCanvas($('#fileBrowser')[0].files[0]);
+                $('#content').toggleClass('invisible');
+                $('#imgNameLabel').toggleClass('invisible');
+                $("#openButton").html('Change Image');
+                $("#imgNameLabel").html(filePath);
+            });
+
+            $('#previewButton').on('click', function () {
+                showPreview = !showPreview;
+                $("#previewButton").html(showPreview ? 'Hide Preview' : 'Preview Image');
+                $('#canvas').toggleClass('invisible');
+            });
+
+            $('#settingButton').on('click', function () {
+                showSettings = !showSettings;
+                $("#settingButton").html(showSettings ? 'Hide Settings' : 'Settings');
+                $('#moreSettings').toggleClass('invisible');
+            });
+
+            $('#generateButton').on('click', function () {
+                $('#progressImg').toggleClass('invisible');
+                setTimeout(function () {
+                    getImageData();
+                    $('#progressImg').toggleClass('invisible');
+                }, 100);
+
+            });
+
+        });
+    </script>
 </head>
 
 <body>
     <div id="container">
-        <div id="header">
-            <label>Source image:</label>
-            <input id="fileUrl" type="text" name="fileUrl" value="monalisa.jpg">
-            <button id="openButton" onclick="loadCanvas($('#fileUrl').val());">Load Image...</button>
-            <label>--></label>
-            <button id="openButton" onclick="getImageData();">Create</button>
-            <br>
             <div class="row">
-                <label>yFactor:</label>
-                <input id="yFactor" type="number" name="yFactor" value="2" />
-                <label>Length (seconds):</label>
-                <input id="length" type="number" name="length" value="3" />
-                <label>Max. Frequency (Hz):</label>
-                <input id="maxFreq" type="number" name="maxFreq" value="20000" />
+                <span id="imgNameLabel" class="invisible"></span>
+                <button id="openButton"  class="action-button" type="button" name="button">Open Image...</button>
+                <input id="fileBrowser" type="file" name="name" value="">
             </div>
-        </div>
-        <canvas id="canvas">
-
-        </canvas>
+            <div id="content" class="invisible">
+                <div class="row">
+                    <button id="previewButton" type="button" name="button">Preview Image</button>
+                    <button id="settingButton" type="button" name="button">Settings</button>
+                </div>
+                <div class="row">
+                    <canvas id="canvas" class="invisible">
+                    </canvas>
+                </div>
+                <div id="moreSettings" class="row invisible">
+                    <label>yFactor:</label>
+                    <input id="yFactor" type="number" name="yFactor" value="2" />
+                    <label>Length (seconds):</label>
+                    <input id="length" type="number" name="length" value="3" />
+                    <label>Max. Frequency (Hz):</label>
+                    <input id="maxFreq" type="number" name="maxFreq" value="20000" />
+                </div>
+                <div class="row">
+                    <button id="generateButton" class="action-button">Encode</button>
+                    <br>
+                    <div id="progressImg" class="invisible">
+                        <span>Please Wait...</span>
+                        <div id="progressImg" class="loader"></div>
+                    </div>
+                </div>
+            </div>
     </div>
 </body>
 

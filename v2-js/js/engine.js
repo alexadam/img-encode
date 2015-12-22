@@ -1,13 +1,22 @@
 function loadCanvas(imagePath) {
+    var reader = new FileReader();
     var c = document.getElementById('canvas');
     var ctx = c.getContext("2d");
     var img = new Image();
-    img.onload = function () {
-        c.width = img.width;
-        c.height = img.height;
-        ctx.drawImage(img, 0, 0, img.width, img.height);
+
+    reader.readAsDataURL(imagePath);
+    reader.onload = function(_file) {
+        img.src    = _file.target.result;
+        img.onload = function() {
+            c.width = img.width;
+            c.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+        };
+        img.onerror= function() {
+            alert('Invalid file: '+ file.type);
+        };
     };
-    img.src = imagePath;
+
 }
 
 function getImageData() {
