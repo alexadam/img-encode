@@ -3,9 +3,17 @@ img-encode
 
 Encode an image to audio spectrum
 
-![alt main.png](https://github.com/alexadam/img-encode/blob/master/main.png?raw=true "main.png")
+Open an image file
 
-Open the generated 'result.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectrogram', you get:
+![alt s1.png](https://github.com/alexadam/img-encode/blob/master/s1.png?raw=true "s1.png")
+
+Click on "Encode"
+
+![alt s2.png](https://github.com/alexadam/img-encode/blob/master/s2.png?raw=true "s2.png")
+
+![alt s3.png](https://github.com/alexadam/img-encode/blob/master/s3.png?raw=true "s3.png")
+
+ Open the generated 'result.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectrogram'. The result:
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec6.png?raw=true "spec6.png")
 
@@ -30,15 +38,13 @@ This is an usage example for the javascript version, tested on Firefox 41, Ubunt
 
 2. go to the '/img-encode' folder
 
-3. copy 'monalisa.jpg' to the '/v2-js' folder
+3. open '/v2-js/index.html' in Firefox
 
-4. open '/v2-js/index.html' in Firefox
+4. click on 'Open Image...' then on 'Encode'
 
-5. click on 'Load Image...' then on 'Create'
+5. After a few seconds you will be prompted to save the generated 'result.wav' (audio) file
 
-6. After a few seconds you will be prompted to save the generated 'result.wav' (audio) file
-
-7. Open 'result.wav' with Sonic Visualizer then click on 'Layer -> add Spectrogram'
+6. Open 'result.wav' with Sonic Visualizer then click on 'Layer -> add Spectrogram'
 
 ## Credits
 
@@ -47,5 +53,3 @@ http://www.ohmpie.com/imageencode/
 http://www.codebase.es/riffwave/
 
 https://github.com/eligrey/FileSaver.js
-
-
