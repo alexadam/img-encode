@@ -3,6 +3,10 @@ img-encode
 
 Encode an image to audio spectrum
 
+## Demo
+
+https://alexadam.github.io/demos/img-encode/index.html
+
 Open an image file
 
 ![alt s1.png](https://github.com/alexadam/img-encode/blob/master/s1.png?raw=true "s1.png")
@@ -16,10 +20,6 @@ Click on "Encode"
  Open the generated 'result.wav' file with 'Sonic Visualizer', click on 'Layer -> add Spectrogram'. The result:
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec6.png?raw=true "spec6.png")
-
-## Demo
-
-https://alexadam.github.io/demos/img-encode/index.html
 
 ## Other examples
 
