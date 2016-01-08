@@ -17,6 +17,10 @@ Click on "Encode"
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec6.png?raw=true "spec6.png")
 
+## Demo
+
+https://alexadam.github.io/demos/img-encode/index.html
+
 ## Other examples
 
 ![alt result](https://github.com/alexadam/img-encode/blob/master/spec1.png?raw=true "spec1.png")
