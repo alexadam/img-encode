@@ -102,7 +102,7 @@ function getImageData() {
     wave.header.bitsPerSample = 16;
     wave.Make(data);
     var tBlob = dataURItoBlob(wave.dataURI);
-    // saveAs(tBlob, 'result.wav');
+    saveAs(tBlob, 'result.wav');
 
     
     audio.src = wave.dataURI
@@ -115,7 +115,7 @@ function getImageData() {
            window.cancelAnimationFrame(animationID)
        }
     )
-    document.body.appendChild(audio);
+    document.getElementById('audioControls').appendChild(audio);
     audio.onplay = function(){
         render();
     }

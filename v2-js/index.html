@@ -8,7 +8,61 @@
 
     <link rel="stylesheet" href="css/style.css" />
 
-    <script src="js/jquery.min.js"></script>
+
+    
+</head>
+
+<body>
+    <div id="container">
+            <div class="row">
+                <span id="imgNameLabel" class="invisible"></span>
+                <button id="openButton"  class="action-button" type="button" name="button">Open Image...</button>
+                <input id="fileBrowser" type="file" name="name" value="" accept="image/*">
+            </div>
+            <div id="content" class="invisible">
+                <div class="row">
+                    <button id="previewButton" type="button" name="button">Preview Image</button>
+                    <button id="settingButton" type="button" name="button">Settings</button>
+                </div>
+                <div class="row">
+                    <canvas id="canvas" class="invisible">
+                    </canvas>
+                </div>
+                <div id="moreSettings" class="row invisible">
+                    <label>yFactor:</label>
+                    <input id="yFactor" type="number" name="yFactor" value="2" />
+                    <label>Length (seconds):</label>
+                    <input id="length" type="number" name="length" value="3" />
+                    <label>Max. Frequency (Hz):</label>
+                    <input id="maxFreq" type="number" name="maxFreq" value="20000" />
+                </div>
+                <div class="row">
+                    <button id="generateButton" class="action-button">Encode</button>
+                    <br>
+                    <div id="progressImg" class="invisible">
+                        <span>Please Wait...</span>
+                        <div id="progressImg" class="loader"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div id="demo"  class="">
+            </div>
+            <div class="clearfix" id='ui-container'>
+            </div> -->
+
+            <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
+
+
+            <!-- <script src="js/spectrum.js"></script> -->
+
+
+
+
+
+
+            <script src="js/jquery.min.js"></script>
     <script src="js/riffwave.js"></script>
     <script src="js/FileSave.js"></script>
     <script src="js/engine.js"></script>
@@ -56,41 +110,6 @@
 
         });
     </script>
-</head>
-
-<body>
-    <div id="container">
-            <div class="row">
-                <span id="imgNameLabel" class="invisible"></span>
-                <button id="openButton"  class="action-button" type="button" name="button">Open Image...</button>
-                <input id="fileBrowser" type="file" name="name" value="" accept="image/*">
-            </div>
-            <div id="content" class="invisible">
-                <div class="row">
-                    <button id="previewButton" type="button" name="button">Preview Image</button>
-                    <button id="settingButton" type="button" name="button">Settings</button>
-                </div>
-                <div class="row">
-                    <canvas id="canvas" class="invisible">
-                    </canvas>
-                </div>
-                <div id="moreSettings" class="row invisible">
-                    <label>yFactor:</label>
-                    <input id="yFactor" type="number" name="yFactor" value="2" />
-                    <label>Length (seconds):</label>
-                    <input id="length" type="number" name="length" value="3" />
-                    <label>Max. Frequency (Hz):</label>
-                    <input id="maxFreq" type="number" name="maxFreq" value="20000" />
-                </div>
-                <div class="row">
-                    <button id="generateButton" class="action-button">Encode</button>
-                    <br>
-                    <div id="progressImg" class="invisible">
-                        <span>Please Wait...</span>
-                        <div id="progressImg" class="loader"></div>
-                    </div>
-                </div>
-            </div>
     </div>
 </body>
 

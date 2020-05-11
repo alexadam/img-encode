@@ -1,0 +1,116 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./beerslider//beerslider.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="first-page">
+            <div class="big-title">
+                Convert an image to sound spectrogram
+            </div>
+            <div class="before-after">
+                <div id="slider" class="beer-slider" data-beer-label="">
+                    <img class="before-after-img" src="./assets/mona-after.jpg" />
+                    <div class="beer-reveal" data-beer-label="">
+                        <img class="before-after-img" src="./assets/mona-before.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page">
+            <button id="uploadImage" class="upload-image">Upload an image...</button>
+            <input id="fileBrowser" type="file" name="name" value="" accept="image/*">
+            <canvas id="canvas" class="invisible"></canvas>
+            <div class="label">
+                Or select one:
+            </div>
+            <div class="img-galery">
+
+            </div>
+            <button id="generateButton" class="upload-image invisible">Convert...</button>
+        </div>
+        <div class="page">
+            <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
+            <div id="audioControls"></div>
+
+
+           
+                <div id="moreSettings" class="row invisible">
+                    <label>yFactor:</label>
+                    <input id="yFactor" type="number" name="yFactor" value="2" />
+                    <label>Length (seconds):</label>
+                    <input id="length" type="number" name="length" value="3" />
+                    <label>Max. Frequency (Hz):</label>
+                    <input id="maxFreq" type="number" name="maxFreq" value="20000" />
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/riffwave.js"></script>
+    <script src="js/FileSave.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="./beerslider/beerslider.js"></script>
+
+
+    <script>
+        new BeerSlider(document.getElementById('slider'), {
+            // start value
+            start: '50',
+            // prefix 
+            prefix: 'beer'
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var fileLoaded = false;
+            var showPreview = false;
+            var showSettings = false;
+
+            $('#uploadImage').on('click', function () {
+                $( "#fileBrowser" ).trigger( "click" );
+            });
+
+            $('#fileBrowser').on('change', function() {
+                var filePath = $(this).val();
+                loadCanvas($('#fileBrowser')[0].files[0]);
+                // $('#content').toggleClass('invisible');
+                // $('#imgNameLabel').toggleClass('invisible');
+                // $("#openButton").html('Change Image');
+                // $("#imgNameLabel").html(filePath);
+                $("#generateButton").toggleClass('invisible')
+            });
+
+            $('#previewButton').on('click', function () {
+                showPreview = !showPreview;
+                $("#previewButton").html(showPreview ? 'Hide Preview' : 'Preview Image');
+                $('#canvas').toggleClass('invisible');
+            });
+
+            $('#settingButton').on('click', function () {
+                showSettings = !showSettings;
+                $("#settingButton").html(showSettings ? 'Hide Settings' : 'Settings');
+                $('#moreSettings').toggleClass('invisible');
+            });
+
+            $('#generateButton').on('click', function () {
+                // getImageData();
+                $('#progressImg').toggleClass('invisible');
+                setTimeout(function () {
+                    getImageData();
+                    $('#progressImg').toggleClass('invisible');
+                }, 100);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
