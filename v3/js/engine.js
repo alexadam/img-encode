@@ -49,6 +49,23 @@ function loadCanvas(imagePath) {
 
 }
 
+function loadCanvasFromExampleFiles(imagePath) {
+    var c = document.getElementById('canvas');
+    var ctx = c.getContext("2d");
+    var img = new Image();
+
+    img.src = imagePath;
+        img.onload = function() {
+            c.width = img.width;
+            c.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+        };
+        img.onerror= function() {
+            alert('Invalid file: '+ imagePath);
+        };
+
+}
+
 function getImageData() {
     var srcCanvas1 = document.getElementById("canvas");
     var srcCtx1 = srcCanvas1.getContext("2d");
@@ -56,7 +73,7 @@ function getImageData() {
     var height = srcImgData1.height;
     var width = srcImgData1.width;
 
-    var durationSeconds = 3; parseFloat($('#length').val());
+    var durationSeconds = parseFloat($('#lengthInSeconds').val());
     var tmpData = [];
     var maxFreq = 0;
     var data = [];

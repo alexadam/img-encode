@@ -9,6 +9,7 @@
     <div class="container">
         <div class="first-page">
             <div class="big-title">
+                <a id="logo-link" href="">img-encode</a>
                 Convert an image to sound spectrogram
             </div>
             <div class="before-after">
@@ -28,14 +29,26 @@
                 Or select one:
             </div>
             <div class="img-galery">
-
+                <img id="galleryImg1" class="gallery-item" src="./assets/mona-before.jpg" alt=""/>
+                <img id="galleryImg2" class="gallery-item" src="./assets/fractal.jpg" alt=""/>
+                <img id="galleryImg3" class="gallery-item" src="./assets/lenna.png" alt=""/>
             </div>
-            <button id="generateButton" class="upload-image invisible">Convert...</button>
+            <div id="settings" class="settings invisible">
+                <div class="settings-row">
+                    <div class="control">
+                        Length in seconds: <input id="lengthInSeconds" type="number" class="nr-input" value="3" min="1" max="99"/>
+                    </div>
+                </div>
+                <span>&darr;</span>
+                <button id="generateButton" class="inline-button">Convert...</button>
+            </div>
         </div>
         <div class="page">
             <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
-            <div id="audioControls"></div>
-
+            <div id="audioControls">
+                
+            </div>
+            
 
            
                 <div id="moreSettings" class="row invisible">
@@ -78,13 +91,13 @@
             });
 
             $('#fileBrowser').on('change', function() {
-                var filePath = $(this).val();
+                resetImgSelection()
+
+                $('#lengthInSeconds').val('3')
+
+                let filePath = $(this).val();
                 loadCanvas($('#fileBrowser')[0].files[0]);
-                // $('#content').toggleClass('invisible');
-                // $('#imgNameLabel').toggleClass('invisible');
-                // $("#openButton").html('Change Image');
-                // $("#imgNameLabel").html(filePath);
-                $("#generateButton").toggleClass('invisible')
+                $("#settings").removeClass('invisible')
             });
 
             $('#previewButton').on('click', function () {
@@ -108,6 +121,36 @@
                 }, 100);
 
             });
+
+            $('#galleryImg1').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('3')
+                $('#galleryImg1').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg1').attr('src'))
+                $("#settings").removeClass('invisible')
+            })
+
+            $('#galleryImg2').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('6')
+                $('#galleryImg2').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg2').attr('src'))
+                $("#settings").removeClass('invisible')
+            })
+
+            $('#galleryImg3').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('5')
+                $('#galleryImg3').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg3').attr('src'))
+                $("#settings").removeClass('invisible')
+            })
+
+            function resetImgSelection() {
+                $('#galleryImg1').removeClass('img-selected')
+                $('#galleryImg2').removeClass('img-selected')
+                $('#galleryImg3').removeClass('img-selected')
+            }
 
         });
     </script>
