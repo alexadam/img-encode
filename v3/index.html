@@ -29,39 +29,40 @@
                 Or select one:
             </div>
             <div class="img-galery">
-                <img id="galleryImg1" class="gallery-item" src="./assets/mona-before.jpg" alt=""/>
-                <img id="galleryImg2" class="gallery-item" src="./assets/fractal.jpg" alt=""/>
-                <img id="galleryImg3" class="gallery-item" src="./assets/lenna.png" alt=""/>
+                <img id="galleryImg1" class="gallery-item" src="./assets/mona-before.jpg" alt="" />
+                <img id="galleryImg2" class="gallery-item" src="./assets/fractal.jpg" alt="" />
+                <img id="galleryImg3" class="gallery-item" src="./assets/lenna.png" alt="" />
             </div>
             <div id="settings" class="settings invisible">
                 <div class="settings-row">
                     <div class="control">
-                        Length in seconds: <input id="lengthInSeconds" type="number" class="nr-input" value="3" min="1" max="99"/>
+                        Length in seconds: <input id="lengthInSeconds" type="number" class="nr-input" value="3" min="1"
+                            max="99" />
                     </div>
                 </div>
                 <span>&darr;</span>
                 <button id="generateButton" class="inline-button">Convert...</button>
             </div>
         </div>
-        <div class="page">
-            <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
-            <div id="audioControls">
-                
+        <div id="previewPage" class="page invisible">
+            <div class="test-box-container">
+                <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
+                <div id="audioControls"></div>
+                <div id="play-icon"><div id="playButton" class="inline-button">Play></div></div>
             </div>
-            
+            <button id="download-link-container" class="inline-button">Download .WAV...</button>
 
-           
-                <div id="moreSettings" class="row invisible">
-                    <label>yFactor:</label>
-                    <input id="yFactor" type="number" name="yFactor" value="2" />
-                    <label>Length (seconds):</label>
-                    <input id="length" type="number" name="length" value="3" />
-                    <label>Max. Frequency (Hz):</label>
-                    <input id="maxFreq" type="number" name="maxFreq" value="20000" />
-                </div>
-                
+            <div id="moreSettings" class="row invisible">
+                <label>yFactor:</label>
+                <input id="yFactor" type="number" name="yFactor" value="2" />
+                <label>Length (seconds):</label>
+                <input id="length" type="number" name="length" value="3" />
+                <label>Max. Frequency (Hz):</label>
+                <input id="maxFreq" type="number" name="maxFreq" value="20000" />
             </div>
+
         </div>
+    </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
@@ -73,25 +74,24 @@
 
     <script>
         new BeerSlider(document.getElementById('slider'), {
-            // start value
             start: '50',
-            // prefix 
             prefix: 'beer'
         });
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var fileLoaded = false;
             var showPreview = false;
             var showSettings = false;
 
             $('#uploadImage').on('click', function () {
-                $( "#fileBrowser" ).trigger( "click" );
+                $("#fileBrowser").trigger("click");
             });
 
-            $('#fileBrowser').on('change', function() {
+            $('#fileBrowser').on('change', function () {
                 resetImgSelection()
+                resetPlayFlow()
 
                 $('#lengthInSeconds').val('3')
 
@@ -113,8 +113,10 @@
             });
 
             $('#generateButton').on('click', function () {
-                // getImageData();
+                resetPlayFlow()
+
                 $('#progressImg').toggleClass('invisible');
+                
                 setTimeout(function () {
                     getImageData();
                     $('#progressImg').toggleClass('invisible');
@@ -150,6 +152,24 @@
                 $('#galleryImg1').removeClass('img-selected')
                 $('#galleryImg2').removeClass('img-selected')
                 $('#galleryImg3').removeClass('img-selected')
+            }
+
+            $('#play-icon').on('click', () => {
+               playFlow()
+            })
+            $('#playButton').on('click', () => {
+               playFlow()
+            })
+
+            function playFlow() {
+                $('#play-icon').addClass('invisible')
+                $('#playButton').addClass('invisible')
+                document.getElementById('audioPlayer').play()
+            }
+            function resetPlayFlow() {
+                $('#play-icon').removeClass('invisible')
+                $('#playButton').removeClass('invisible')
+                $('#previewPage').addClass('invisible')
             }
 
         });
