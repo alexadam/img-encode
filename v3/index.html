@@ -48,10 +48,16 @@
             <div class="test-box-container">
                 <canvas id="spectrum-canvas" width="800px" height="600px"></canvas>
                 <div id="audioControls"></div>
-                <div id="play-icon"><div id="playButton" class="inline-button">Play></div></div>
+                <div id="play-icon">
+                    <div id="playButton" class="inline-button">Play></div>
+                </div>
             </div>
             <button id="download-link-container" class="inline-button">Download .WAV...</button>
 
+            <!-- TODO -->
+            <!-- TODO -->
+            <!-- TODO -->
+            <!-- TODO -->
             <div id="moreSettings" class="row invisible">
                 <label>yFactor:</label>
                 <input id="yFactor" type="number" name="yFactor" value="2" />
@@ -61,9 +67,30 @@
                 <input id="maxFreq" type="number" name="maxFreq" value="20000" />
             </div>
 
+            <div class="footer">
+                <div class="credits">
+                    <div class="credits-title">
+                        Credits
+                    </div>
+                    <a href="http://www.ohmpie.com/imageencode/">OhmPie</a>
+                    <a href="https://academo.org/demos/spectrum-analyzer/">Academo</a>
+                    <a href="https://gist.github.com/hackNightly/3776503">riffwave.js</a>
+                    <a href="https://github.com/eligrey/FileSaver.js">FileSaver</a>
+                </div>
+                <div class="connect">
+                    Connect
+                </div>
+            </div>
         </div>
+        
     </div>
+
+   
+
+    <div id="waitScreen" class="invisible">
+        <div id="waitMessage">Please Wait...</div>
     </div>
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/riffwave.js"></script>
@@ -113,10 +140,11 @@
             });
 
             $('#generateButton').on('click', function () {
+                showLoading()
                 resetPlayFlow()
 
                 $('#progressImg').toggleClass('invisible');
-                
+
                 setTimeout(function () {
                     getImageData();
                     $('#progressImg').toggleClass('invisible');
@@ -155,10 +183,10 @@
             }
 
             $('#play-icon').on('click', () => {
-               playFlow()
+                playFlow()
             })
             $('#playButton').on('click', () => {
-               playFlow()
+                playFlow()
             })
 
             function playFlow() {
@@ -166,12 +194,13 @@
                 $('#playButton').addClass('invisible')
                 document.getElementById('audioPlayer').play()
             }
+
             function resetPlayFlow() {
                 $('#play-icon').removeClass('invisible')
                 $('#playButton').removeClass('invisible')
                 $('#previewPage').addClass('invisible')
             }
-
+            
         });
     </script>
 </body>

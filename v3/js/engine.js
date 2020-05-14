@@ -23,7 +23,12 @@ input.connect(audioContext.destination);
 
 
 
-
+function showLoading() {
+    $('#waitScreen').removeClass('invisible')
+}
+function hideLoading() {
+    $('#waitScreen').addClass('invisible')
+}
 
 
 
@@ -120,6 +125,9 @@ function getImageData() {
     let tBlob = dataURItoBlob(wave.dataURI);
     // saveAs(tBlob, 'result.wav');
 
+    // when done - hide the loading screen
+    hideLoading()
+
     let fileURL = window.URL.createObjectURL(tBlob);
 
     $('#previewPage').removeClass('invisible')
@@ -188,25 +196,8 @@ function dataURItoBlob(dataURI) {
 
 
 function render() {
-    //console.log('Render');
-    // this.width = window.innerWidth;
-    // width = 800;
-    // // this.height = window.innerHeight;
-    // height = Math.round(width*0.67);
-
-    // canvas.width = width
-    // canvas.height = height
-
-    //this.renderTimeDomain();
     renderFreqDomain();
-
     animationID = requestAnimationFrame(render.bind(this));
-
-    // var now = new Date();
-    // if (this.lastRenderTime_) {
-    //   this.instantaneousFPS = now - this.lastRenderTime_;
-    // }
-    // this.lastRenderTime_ = now;
 }
 
 
@@ -224,15 +215,9 @@ function renderFreqDomain() {
 
     for (let i = 0; i < freq.length; i++) {
         let value;
-        // Draw each pixel with the specific color.
-        //   if (this.log) {
-        //     logIndex = this.logScale(i, freq.length);
-        //     value = freq[logIndex];
-        //   } else {
-        value = freq[i];
-        //   }
 
-        //   ctx.fillStyle = (this.color ? this.getFullColor(value) : this.getGrayColor(value));
+        value = freq[i];
+
         ctx.fillStyle = getGrayColor(value)
         //   ctx.fillStyle = getFullColor(value)
 
@@ -241,9 +226,6 @@ function renderFreqDomain() {
 
         let hhh = height / freq.length
 
-        // draw the line at the right side of the canvas
-        //   ctx.fillRect(width - speed, height - y,
-        //                speed, speed);
         ctx.fillRect(width - speed, height - y,
             speed, speed);
     }
@@ -260,10 +242,6 @@ function renderFreqDomain() {
 }
 
 function getGrayColor(value) {
-    // if (value>160) {
-    //     console.log(value);
-
-    // }
     return 'rgb(V, V, V)'.replace(/V/g, value * 1.1);
 }
 
