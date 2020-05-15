@@ -1,16 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Gilda+Display&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Italiana&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Voltaire&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Oranienbaum&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Oranienbaum&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Jomhuria&display=swap');
 
 * {
-    font-family: 'DM Serif Display', serif;
-    font-family: 'Gilda Display', serif;
-    font-family: 'Italiana', serif;
-    font-family: 'Voltaire', sans-serif;
     font-family: 'Oranienbaum', serif;
     box-sizing: border-box;
 }
@@ -46,11 +38,10 @@ body {
 
 .page {
     width: 100%;
-    height: 100%;
-    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
 }
 
 #logo-link {
@@ -88,27 +79,62 @@ body {
     height: auto;
 }
 
-button.upload-image {
+.click-button {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+}
+
+.upload-image {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-size: 60px;
     text-align: center;
     cursor: pointer;
     width: 600px;
-    height: 60px;
-    background-color: rgba(0, 0, 0, 0);
+    min-height: 70px;
     border: 0;
-    border-bottom: solid 20px yellow;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
     margin-top: 100px;
+    position: relative;
+}
+
+.upload-image::before {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    border-bottom: solid 20px yellow;
+    z-index: -1;
 }
 
 .inline-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-size: 50px;
     text-align: center;
     cursor: pointer;
     width: 300px;
-    height: 50px;
+    height: 60px;
     background-color: rgba(0, 0, 0, 0);
     border: 0;
+    outline: 0;
+    position: relative;
+}
+.inline-button::before {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
     border-bottom: solid 20px yellow;
+    z-index: -1;
 }
 
 #fileBrowser {
@@ -127,8 +153,6 @@ div.label {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    box-sizing: content-box;
-    /* height: 400px; */
 }
 
 .gallery-item {
@@ -139,8 +163,6 @@ div.label {
 
 .gallery-item:hover {
     cursor: pointer;
-    /* border-bottom: solid 10px yellow; */
-    /* border:2px solid yellow; */
     outline: 2px yellow solid;
     outline-offset: -6px;
 }
@@ -273,4 +295,14 @@ div.label {
     display: flex; flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .before-after-img {
+        width: 300px;
+        height: auto;
+    }
 }

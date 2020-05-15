@@ -9,7 +9,7 @@
     <div class="container">
         <div class="first-page">
             <div class="big-title">
-                <a id="logo-link" href="">img-encode</a>
+                <a id="logo-link" href="https://github.com/alexadam/img-encode">img-encode</a>
                 Convert an image to sound spectrogram
             </div>
             <div class="before-after">
@@ -43,6 +43,7 @@
                 <span>&darr;</span>
                 <button id="generateButton" class="inline-button">Convert...</button>
             </div>
+            <div style="min-height:100px"></div>
         </div>
         <div id="previewPage" class="page invisible">
             <div class="test-box-container">
@@ -84,7 +85,6 @@
         </div>
         
     </div>
-
    
 
     <div id="waitScreen" class="invisible">
@@ -158,6 +158,7 @@
                 $('#galleryImg1').addClass('img-selected')
                 loadCanvasFromExampleFiles($('#galleryImg1').attr('src'))
                 $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
             })
 
             $('#galleryImg2').on('click', () => {
@@ -166,6 +167,7 @@
                 $('#galleryImg2').addClass('img-selected')
                 loadCanvasFromExampleFiles($('#galleryImg2').attr('src'))
                 $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
             })
 
             $('#galleryImg3').on('click', () => {
@@ -174,6 +176,7 @@
                 $('#galleryImg3').addClass('img-selected')
                 loadCanvasFromExampleFiles($('#galleryImg3').attr('src'))
                 $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
             })
 
             function resetImgSelection() {
