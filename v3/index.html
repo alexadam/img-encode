@@ -65,15 +65,18 @@
                     <a href="https://github.com/eligrey/FileSaver.js">FileSaver</a>
                 </div>
                 <div class="connect">
-                    <a href="https://github.com/alexadam/img-encode" class="connect-link"><img src="./assets/icons/github-64.png" alt="github"/></a>
-                    <a href="https://twitter.com/_alexadam" class="connect-link"><img src="./assets/icons/twitter.png" alt="twitter"/></a>
-                    <a href="https://dribbble.com/alexadam" class="connect-link"><img src="./assets/icons/dribbble.png" alt="dribbble"/></a>
+                    <a href="https://github.com/alexadam/img-encode" class="connect-link"><img
+                            src="./assets/icons/github-64.png" alt="github" /></a>
+                    <a href="https://twitter.com/_alexadam" class="connect-link"><img src="./assets/icons/twitter.png"
+                            alt="twitter" /></a>
+                    <a href="https://dribbble.com/alexadam" class="connect-link"><img src="./assets/icons/dribbble.png"
+                            alt="dribbble" /></a>
                 </div>
             </div>
         </div>
-        
+
     </div>
-   
+
 
     <div id="waitScreen" class="invisible">
         <div id="waitMessage">Please Wait...</div>
@@ -95,16 +98,12 @@
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            var fileLoaded = false;
-            var showPreview = false;
-            var showSettings = false;
-
-            $('#uploadImage').on('click', function () {
+        $(document).ready(() => {
+            $('#uploadImage').on('click', () => {
                 $("#fileBrowser").trigger("click");
             });
 
-            $('#fileBrowser').on('change', function () {
+            $('#fileBrowser').on('change', () => {
                 resetImgSelection()
                 resetPlayFlow()
 
@@ -115,25 +114,13 @@
                 $("#settings").removeClass('invisible')
             });
 
-            $('#previewButton').on('click', function () {
-                showPreview = !showPreview;
-                $("#previewButton").html(showPreview ? 'Hide Preview' : 'Preview Image');
-                $('#canvas').toggleClass('invisible');
-            });
-
-            $('#settingButton').on('click', function () {
-                showSettings = !showSettings;
-                $("#settingButton").html(showSettings ? 'Hide Settings' : 'Settings');
-                $('#moreSettings').toggleClass('invisible');
-            });
-
-            $('#generateButton').on('click', function () {
+            $('#generateButton').on('click', () => {
                 showLoading()
                 resetPlayFlow()
 
                 $('#progressImg').toggleClass('invisible');
 
-                setTimeout(function () {
+                setTimeout(() => {
                     getImageData();
                     $('#progressImg').toggleClass('invisible');
                 }, 100);
@@ -191,7 +178,7 @@
                 $('#playButton').removeClass('invisible')
                 $('#previewPage').addClass('invisible')
             }
-            
+
         });
     </script>
 </body>
