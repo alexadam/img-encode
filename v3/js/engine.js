@@ -14,8 +14,6 @@ var tempCanvas = document.createElement('canvas')
 
 var input = input || audioContext.createMediaElementSource(audio)
 var analyser = audioContext.createAnalyser()
-analyser.smoothingTimeConstant = 0.1
-analyser.fftSize = fftsize
 
 input.connect(analyser)
 input.connect(audioContext.destination)
@@ -84,9 +82,9 @@ function getImageData() {
     let channels = 1
     let numSamples = Math.round(sampleRate * durationSeconds)
     let samplesPerPixel = Math.floor(numSamples / width)
-    let maxSpecFreq = parseInt($('#maxFreq').val())
+    let maxSpecFreq = 20000 // Hz
     let C = maxSpecFreq / height
-    let yFactor = 2 // parseFloat($('#yFactor').val())
+    let yFactor = 2 // y-axis resolution
 
     for (let x = 0; x < numSamples; x++) {
         let rez = 0
@@ -154,8 +152,8 @@ function getImageData() {
     }
 
     analyser = audioContext.createAnalyser()
-    analyser.smoothingTimeConstant = 0
-    analyser.fftSize = fftsize
+    analyser.smoothingTimeConstant = 0.3
+    analyser.fftSize = 1024 //fftsize
 
     input.connect(analyser)
     input.connect(audioContext.destination)
@@ -191,7 +189,7 @@ function render() {
     tempCtx.drawImage(canvas, 0, 0, width, height)
 
     for (let i = 0; i < freq.length; i++) {
-        let value = freq[i] * 1.1 // TODO remove 1.1 factor
+        let value = freq[i]
 
         ctx.fillStyle = `rgb(${value}, ${value}, ${value})`
 

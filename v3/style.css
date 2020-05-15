@@ -274,11 +274,15 @@ div.label {
     color: black
 }
 .connect {  
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: row;
     width: 100%;
     align-items: center;
+    justify-content: center;
 }
-
+.connect-link img {
+    width: 24px; height: 24px;
+    margin-right: 10px;
+}
 
 
 #waitScreen {
