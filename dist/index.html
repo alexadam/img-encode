@@ -1,0 +1,75 @@
+<html><head><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="./beerslider//beerslider.css"><title>img-encode - Convert an image to sound spectrum (image to sound)</title><meta name="description" content="Convert an image to audio spectrum; image to sound; audio spectrum; spectrogram"><meta name="keywords" content="image to sound, image to audio, image, sound, audio, spectrum, spectrogram, encoder"><meta name="author" content="Alex Adam"><meta name="og:title" property="og:title" content="img-encode - Convert an image to sound spectrum (image to sound)"></head><body><div class="container"><div class="first-page"><div class="big-title"><a id="logo-link" href="https://github.com/alexadam/img-encode">img-encode</a> Convert an image to sound spectrum</div><div class="before-after"><div id="slider" class="beer-slider" data-beer-label=""><img class="before-after-img" src="./assets/mona-after.jpg" alt="image as sound"><div class="beer-reveal" data-beer-label=""><img class="before-after-img" src="./assets/mona-before.jpg"></div></div></div></div><div class="page"><button id="uploadImage" class="upload-image">Upload an image...</button> <input id="fileBrowser" type="file" name="name" value="" accept="image/*"><canvas id="canvas" class="invisible"></canvas><div class="label">Or select one:</div><div class="img-galery"><img id="galleryImg1" class="gallery-item" src="./assets/mona-before.jpg" alt=""> <img id="galleryImg2" class="gallery-item" src="./assets/fractal.jpg" alt=""> <img id="galleryImg3" class="gallery-item" src="./assets/lenna.png" alt=""></div><div id="settings" class="settings invisible"><div class="settings-row"><div class="control">Length in seconds: <input id="lengthInSeconds" type="number" class="nr-input" value="3" min="1" max="99"></div></div><span>&darr;</span> <button id="generateButton" class="inline-button">Convert...</button></div><div style="min-height:100px"></div></div><div id="previewPage" class="page invisible"><div class="test-box-container"><canvas id="spectrum-canvas" width="800px" height="600px"></canvas><div id="audioControls"></div><div id="play-icon"><div id="playButton" class="inline-button">Play></div></div></div><button id="download-link-container" class="inline-button">Download .WAV...</button><div class="footer"><div class="credits"><div class="credits-title">Credits</div><a href="http://www.ohmpie.com/imageencode/">OhmPie</a> <a href="https://academo.org/demos/spectrum-analyzer/">Academo</a> <a href="https://gist.github.com/hackNightly/3776503">riffwave.js</a> <a href="https://github.com/eligrey/FileSaver.js">FileSaver</a></div><div class="connect"><a href="https://github.com/alexadam/img-encode" class="connect-link"><img src="./assets/icons/github-64.png" alt="github"></a><a href="https://twitter.com/_alexadam" class="connect-link"><img src="./assets/icons/twitter.png" alt="twitter"></a><a href="https://dribbble.com/alexadam" class="connect-link"><img src="./assets/icons/dribbble.png" alt="dribbble"></a></div></div></div></div><div id="waitScreen" class="invisible"><div id="waitMessage">Please Wait...</div></div><script src="js/jquery.min.js"></script><script src="js/riffwave.js"></script><script src="js/FileSave.js"></script><script src="js/engine.js"></script><script src="./beerslider/beerslider.js"></script><script>new BeerSlider(document.getElementById("slider"),{start:"50",prefix:"beer"})</script><script type="text/javascript">$(document).ready(() => {
+            $('#uploadImage').on('click', () => {
+                $("#fileBrowser").trigger("click");
+            });
+
+            $('#fileBrowser').on('change', () => {
+                resetImgSelection()
+                resetPlayFlow()
+
+                $('#lengthInSeconds').val('3')
+                
+                loadCanvas($('#fileBrowser')[0].files[0])
+                $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY)
+            });
+
+            $('#generateButton').on('click', () => {
+                showLoading()
+                resetPlayFlow()
+                setTimeout(() => getImageData(),100)
+            });
+
+            $('#galleryImg1').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('3')
+                $('#galleryImg1').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg1').attr('src'))
+                $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
+            })
+
+            $('#galleryImg2').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('6')
+                $('#galleryImg2').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg2').attr('src'))
+                $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
+            })
+
+            $('#galleryImg3').on('click', () => {
+                resetImgSelection()
+                $('#lengthInSeconds').val('5')
+                $('#galleryImg3').addClass('img-selected')
+                loadCanvasFromExampleFiles($('#galleryImg3').attr('src'))
+                $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY);
+            })
+
+            function resetImgSelection() {
+                $('#galleryImg1').removeClass('img-selected')
+                $('#galleryImg2').removeClass('img-selected')
+                $('#galleryImg3').removeClass('img-selected')
+            }
+
+            $('#play-icon').on('click', () => {
+                playFlow()
+            })
+            $('#playButton').on('click', () => {
+                playFlow()
+            })
+
+            function playFlow() {
+                $('#play-icon').addClass('invisible')
+                $('#playButton').addClass('invisible')
+                document.getElementById('audioPlayer').play()
+            }
+
+            function resetPlayFlow() {
+                $('#play-icon').removeClass('invisible')
+                $('#playButton').removeClass('invisible')
+                $('#previewPage').addClass('invisible')
+            }
+
+        });</script></body></html>
