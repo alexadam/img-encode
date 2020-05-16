@@ -113,23 +113,16 @@
                 resetPlayFlow()
 
                 $('#lengthInSeconds').val('3')
-
-                let filePath = $(this).val();
-                loadCanvas($('#fileBrowser')[0].files[0]);
+                
+                loadCanvas($('#fileBrowser')[0].files[0])
                 $("#settings").removeClass('invisible')
+                window.scrollTo(0, 300 + window.scrollY)
             });
 
             $('#generateButton').on('click', () => {
                 showLoading()
                 resetPlayFlow()
-
-                $('#progressImg').toggleClass('invisible');
-
-                setTimeout(() => {
-                    getImageData();
-                    $('#progressImg').toggleClass('invisible');
-                }, 100);
-
+                setTimeout(() => getImageData(),100)
             });
 
             $('#galleryImg1').on('click', () => {
